@@ -14,7 +14,7 @@ bot_id = "5109024662:AAHKCkKFmSxBMA_ay4sJhz3Y07AL3j3lxzU"
 chat_id = "-619212012"
 base_url = "https://api.telegram.org/bot" + bot_id + "/sendMessage?chat_id=" + chat_id + '&text=Ledig time funnet'
 
-driver.get("https://www.vegvesen.no/dinside/dittforerkort/timebestilling/#/ledige-timer/sak/848542648/klasse/A2/trafikkstasjonId/031")
+driver.get("https://www.vegvesen.no/dinside/dittforerkort/timebestilling/timer#/endre/sak/848542648/klasse/A2/trafikkstasjonId/031")
 
 
 time.sleep(60)
@@ -28,11 +28,11 @@ counter = 0
 
 while not found_time:
     try:
-        ledig_time = driver.find_element(By.ID, "kalenderinfo")
+        driver.find_element(By.XPATH, '/html/body/div[1]/main/div[2]/div/div[2]/div[1]/div/div/div/div[2]')
     except NoSuchElementException:
-        time.sleep(random.randint(210, 270))
+        time.sleep(random.randint(50, 90))
         driver.refresh()
-        time.sleep(30)
+        time.sleep(10)
         counter = counter + 1
         print("Siden har blitt refreshet {antall} ganger. Kl {tid} ".format(antall=counter, tid = finnTid())) 
     else: 
